@@ -6,11 +6,6 @@ import sys
 import json
 import os
 
-import pandas as pd
-import numpy as np
-import networkx as nx
-import matplotlib.pyplot as plt
-
 from collections import defaultdict
 from StringIO import StringIO
 from os import listdir
@@ -124,6 +119,10 @@ class GameState(object):
 
 
     def graph(self):
+        import pandas as pd
+        import networkx as nx
+        import matplotlib.pyplot as plt
+
         ks = []
         for p, batters in self.k_graph.items():
             for k in batters:
