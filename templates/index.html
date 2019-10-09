@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- taken from url=(0049)https://tompiona.github.io/lex_lebron/index.html# -->
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Transitive Strikeout Calculator</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <style>
+      li {
+        margin-bottom: 8px;
+      }
+  </style>
+</head>
+
+<body>
+
+  <div id="container" class="container">
+    <header>
+    <h1>Six Degrees of Babe Ruth:</h1>
+    <h2>Transitive strikeout calculator</h2>
+    <em>If player X struck out player Y, and player Y struck out player Z, that
+      means player X can strike out player Z.</em>
+
+    <div id="main" style="margin: 20px;">
+       <form action="http://127.0.0.1:5000/search">
+         Could <input type="text" name="start"> strike out <input type="text" name="end">?
+         <input type="submit" value="Go">
+       </form> 
+    </div>
+  </header>
+
+  <div>
+    {% autoescape false %}
+    {{ text }}
+    {% endautoescape %}
+  </div>
+
+  <div>
+    Credits:
+    <p>Idea from <a
+                              href="https://old.reddit.com/r/baseball/comments/df4ypv/adam_ottavinos_transitive_strikeout_of_babe_ruth/">this post</a>
+    by u/Iaiaiaiaiaiain.</p>
+    <p>Data from <a href="https://www.retrosheet.org/game.htm">Retrosheet</a>.</p>
+  </div>
+  </div> <!--! end of #container -->
+</body></html>
