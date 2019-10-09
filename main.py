@@ -184,25 +184,24 @@ def search():
 
     path = gs.search(start, end)
 
-    if not path:
+    if path:
+        text = '<h3>%s could strike out %s.</h3>\n' % (gs.names[path[0]],
+                                                       gs.names[path[-1]])
+
+        for i in range(len(path) - 1):
+            p = path[i]
+            b = path[i+1]
+            text += "<p>%s struck out %s:\n<ul>\n" % (gs.names[p], gs.names[b])
+
+            for k in gs.strikeouts[(p, b)]:
+                text += "<li>pitching for the %s against the %s on %s</li>\n" % (
+                    gs.teams[k[0]], gs.teams[k[1]], k[2].strftime('%m/%d/%Y'))
+
+            text += "</ul></p>\n"
+    else:
         text = '<h3>%s couldn\'t strike out %s.</h3>' % (start, end)
-        return render_template('index.html', text=text)
 
-    text = '<h3>%s could strike out %s.</h3>\n' % (gs.names[path[0]],
-                                                   gs.names[path[-1]])
-
-    for i in range(len(path) - 1):
-        p = path[i]
-        b = path[i+1]
-        text += "<p>%s struck out %s:\n<ul>\n" % (gs.names[p], gs.names[b])
-
-        for k in gs.strikeouts[(p, b)]:
-            text += "<li>pitching for the %s against the %s on %s</li>\n" % (
-                gs.teams[k[0]], gs.teams[k[1]], k[2].strftime('%m/%d/%Y'))
-
-        text += "</ul></p>\n"
-
-    return render_template('index.html', text=text)
+    return render_template('index.html', start=start, end=end, text=text)
 
 
 if __name__ == '__main__':

@@ -6,6 +6,12 @@ Thanks to graph theory, we have the answer.
 Parses data from RetroSheet to find all strikeouts since 1919. Builds a directed
 graph and uses BFS to find the shortest route from a pitcher to a hitter.
 
+To run: 
+```
+$ pip install -r requirements.txt
+python main.py
+```
+
 Credits:
 [https://reddit.com/r/baseball/comments/df4ypv/adam_ottavinos_transitive_strikeout_of_babe_ruth/](https://old.reddit.com/r/baseball/comments/df4ypv/adam_ottavinos_transitive_strikeout_of_babe_ruth/)
 [https://www.retrosheet.org/](https://www.retrosheet.org/)
