@@ -92,19 +92,33 @@ class GameState(object):
             self.parse_line(l)
 
 
-    def search(self, start, end):
+    def do_search(self, start, end):
+        starts = []
+        ends = []
+
         if start not in self.names:
             for k, v in self.names.items():
                 if start.lower() == v.lower():
-                    start = k
+                    starts.append(k)
 
         if end not in self.names:
             for k, v in self.names.items():
                 if end.lower() == v.lower():
-                    end = k
+                    ends.append(k)
 
+        for s in starts:
+            for e in ends:
+                res = self.search(s, e)
+                if res is not None:
+                    return res
+
+        return None
+
+
+    def search(self, start, end):
         q = [[p] for p in self.k_graph[start]]
         seen = set()
+
         while q:
             path = q.pop(0)
             if path[-1] == end:
@@ -175,13 +189,14 @@ def load(path):
 
 from flask import Flask, request, render_template
 app = Flask(__name__)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-@app.route('/search', methods=['GET'])
+@app.route('/', methods=['GET'])
 def search():
     start = request.args.get('start', 'Adam Ottavino')
     end = request.args.get('end', 'Babe Ruth')
 
-    path = gs.search(start, end)
+    path = gs.do_search(start, end)
 
     if path:
         text = '<h3>%s could strike out %s.</h3>\n' % (gs.names[path[0]],
@@ -205,4 +220,6 @@ def search():
 
 if __name__ == '__main__':
     gs = parse('./data')
-    app.run()
+    app.run(host="0.0.0.0", port=443,
+            ssl_context=('/etc/letsencrypt/live/transitivestrikeouts.com/fullchain.pem',
+                         '/etc/letsencrypt/live/transitivestrikeouts.com/privkey.pem'))

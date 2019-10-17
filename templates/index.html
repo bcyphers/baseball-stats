@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <!-- taken from url=(0049)https://tompiona.github.io/lex_lebron/index.html# -->
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>Transitive Strikeout Calculator</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <title>Transitive Strikeout Calculator</title>
 
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-
-    <link rel="stylesheet" href="./styles/reset.css">
-    <link rel="stylesheet" href="./styles/bootstrap.min.css">
-    <link rel="stylesheet" href="./styles/style.css">
-
-    <style>
-      li {
-        margin-bottom: 8px;
-      }
+  <style>
+    body {
+      margin-left: 20%;
+      margin-right: 20%;
+    }
   </style>
 </head>
 
@@ -29,11 +22,11 @@
     <header>
     <h1>Six Degrees of Babe Ruth:</h1>
     <h2>Transitive strikeout calculator</h2>
-    <em>If player X struck out player Y, and player Y struck out player Z, that
-      means player X can strike out player Z.</em>
+    <em>If player X struck out player Y, and player Y struck out player Z, then
+      player X could strike out player Z.</em>
 
     <div id="main" style="margin: 20px;">
-       <form action="http://127.0.0.1:5000/search">
+       <form action="/">
          Could <input type="text" name="start" value="{{ start }}">
          strike out <input type="text" name="end" value="{{ end }}">?
          <input type="submit" value="Go">
